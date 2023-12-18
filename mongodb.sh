@@ -42,5 +42,5 @@ VALIDATE $? "starting of mangodb"
 sei -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
 VALIDATE $? "replacing ip address"
 
-systemctl restart mongod
+systemctl restart mongod &>> $LOGFILE
 VALIDATE $? "restarting of mangodb"
