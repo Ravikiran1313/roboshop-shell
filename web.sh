@@ -27,28 +27,38 @@ else
     echo -e "$G your a root user" 
 fi 
 
-dnf install nginx -y 
-VALIDATE $? "installing nginx"
+dnf install nginx -y &>> $LOGFILE
+ 
+VALIDATE $? "Installing nginx"
 
-systemctl enable nginx 
-VALIDATE $? "enabling nginx"
+systemctl enable nginx &>> $LOGFILE
 
-systemctl start nginx 
-VALIDATE $? "starting nginx"
+VALIDATE $? "Enable nginx" 
 
-rm -rf /usr/share/nginx/html/* 
-VALIDATE $? "removing front end default content"
+systemctl start nginx &>> $LOGFILE
 
-curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip 
-VALIDATE $? "getting front end content from web"
+VALIDATE $? "Starting Nginx"
 
-cd /usr/share/nginx/html 
-VALIDATE $? "copying new front content to our web page"
+rm -rf /usr/share/nginx/html/* &>> $LOGFILE
 
-unzip -o /tmp/web.zip 
-VALIDATE $? "unzipping the web page"
+VALIDATE $? "removed default website"
 
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
-VALIDATE $? "copying the roboshop cong file"
+curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
 
-systemctl restart nginx
+VALIDATE $? "Downloaded web application"
+
+cd /usr/share/nginx/html &>> $LOGFILE
+
+VALIDATE $? "moving nginx html directory"
+
+unzip -o /tmp/web.zip &>> $LOGFILE
+
+VALIDATE $? "unzipping web"
+ 
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE 
+
+VALIDATE $? "copied roboshop reverse proxy config"
+
+systemctl restart nginx &>> $LOGFILE
+
+VALIDATE $? "restarted nginx"
