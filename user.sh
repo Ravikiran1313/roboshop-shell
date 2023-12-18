@@ -51,28 +51,28 @@ mkdir -p /app &>> $LOGFILE
 VALIDATE $? "making new directory app"
 
 curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
-VALIDATE $? "coyping of catalouge list"
+VALIDATE $? "coyping of user list"
 
 cd /app &>> $LOGFILE
 VALIDATE $? "changing to app directory"
 
 unzip -o /tmp/user.zip &>> $LOGFILE
-VALIDATE $? "unziping the catalouge file"
+VALIDATE $? "unziping the user file"
 
 npm install &>> $LOGFILE
 VALIDATE $? "installing depenency packages"
 
 cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
-VALIDATE $? "copying the catalouge service file"
+VALIDATE $? "copying the user service file"
 
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "reloading demon"
 
 systemctl enable user &>> $LOGFILE
-VALIDATE $? "enabling catalouge server"
+VALIDATE $? "enabling user server"
 
 systemctl start user &>> $LOGFILE
-VALIDATE $? "starting catalogue sever"
+VALIDATE $? "starting user sever"
 
 cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "copying the mongodb repo"

@@ -63,14 +63,14 @@ npm install &>> $LOGFILE
 VALIDATE $? "installing depenency packages"
 
 cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service
-VALIDATE $? "copying the catalouge service file"
+VALIDATE $? "copying the cart service file"
 
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "reloading demon"
 
 systemctl enable cart &>> $LOGFILE
-VALIDATE $? "enabling catalouge server"
+VALIDATE $? "enabling cart server"
 
 systemctl start cart &>> $LOGFILE
-VALIDATE $? "starting catalogue sever"
+VALIDATE $? "starting cart sever"
 
