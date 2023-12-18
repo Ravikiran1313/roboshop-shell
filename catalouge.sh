@@ -36,7 +36,7 @@ VALIDATE $? "enabling of nodejs 18  version"
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "installing of nodejs 18  version"
 id roboshop
-if[ $? -ne 0 ]
+if [ $? -ne 0 ]
 then   
     useradd roboshop &>> $LOGFILE
     VALIDATE $? "new user roboshop added"
