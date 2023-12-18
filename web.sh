@@ -27,28 +27,28 @@ else
     echo -e "$G your a root user" 
 fi 
 
-dnf install nginx -y &>> $LOGFILE
+dnf install nginx -y 
 VALIDATE $? "installing nginx"
 
-systemctl enable nginx &>> $LOGFILE
+systemctl enable nginx 
 VALIDATE $? "enabling nginx"
 
-systemctl start nginx &>> $LOGFILE
+systemctl start nginx 
 VALIDATE $? "starting nginx"
 
-rm -rf /usr/share/nginx/html/* &>> $LOGFILE
+rm -rf /usr/share/nginx/html/* 
 VALIDATE $? "removing front end default content"
 
-curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
+curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip 
 VALIDATE $? "getting front end content from web"
 
-cd /usr/share/nginx/html &>> $LOGFILE
+cd /usr/share/nginx/html 
 VALIDATE $? "copying new front content to our web page"
 
-unzip -o /tmp/web.zip &>> $LOGFILE
+unzip -o /tmp/web.zip 
 VALIDATE $? "unzipping the web page"
 
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 VALIDATE $? "copying the roboshop cong file"
 
-systemctl restart nginx &>> $LOGFILE
+systemctl restart nginx 
