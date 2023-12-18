@@ -51,13 +51,13 @@ mkdir -p /app &>> $LOGFILE
 VALIDATE $? "making new directory app"
 
 curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> $LOGFILE
-VALIDATE $? "coyping of catalouge list"
+VALIDATE $? "coyping of cart list"
 
 cd /app &>> $LOGFILE
 VALIDATE $? "changing to app directory"
 
 unzip -o /tmp/cart.zip &>> $LOGFILE
-VALIDATE $? "unziping the user file"
+VALIDATE $? "unziping the cart file"
 
 npm install &>> $LOGFILE
 VALIDATE $? "installing depenency packages"
