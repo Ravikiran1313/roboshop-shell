@@ -35,7 +35,9 @@ VALIDATE $? "enabling of nodejs 18  version"
 
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "installing of nodejs 18  version"
-id roboshop
+
+id roboshop &>> $LOGFILE
+
 if [ $? -ne 0 ]
 then   
     useradd roboshop &>> $LOGFILE
@@ -60,7 +62,7 @@ VALIDATE $? "unziping the catalouge file"
 npm install &>> $LOGFILE
 VALIDATE $? "installing depenency packages"
 
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop-shell/catalouge.service /etc/systemd/system/catalogue.service
 VALIDATE $? "copying the catalouge service file"
 
 systemctl daemon-reload &>> $LOGFILE
