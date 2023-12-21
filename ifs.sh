@@ -12,5 +12,5 @@ fi
 
 while IFS= ":" -r user_name user_passwd user_id
 do
-echo -e "$user_name $user_passwd $user_id"
+    echo -e "$user_name $user_passwd $user_id"
 done < $FILE    
