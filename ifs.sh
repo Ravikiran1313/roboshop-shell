@@ -14,5 +14,7 @@ fi
 
 while IFS=":" read -r user_name user_passwd user_id
 do
-    echo "$user_name $user_passwd $user_id"
+    echo "$user_name"
+    echo "$user_passwd"
+    echo "$$user_id"
 done < $FILE    
