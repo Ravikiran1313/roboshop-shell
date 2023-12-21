@@ -11,7 +11,7 @@ then
     echo -e "$R file $FILE not found"
 fi
 
-while IFS= ":" read -r user_name user_passwd user_id
+while IFS=":" read -r user_name user_passwd user_id
 do
     echo "$user_name $user_passwd $user_id"
 done < $FILE    
