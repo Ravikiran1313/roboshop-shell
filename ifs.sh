@@ -10,7 +10,7 @@ do
     echo -e "$R file $FILE not found"
 fi
 
-while IFS= ":" -r user_name user_passwd user_id
+while IFS= ":" read -r user_name user_passwd user_id
 do
-    echo -e "$user_name $user_passwd $user_id"
+    echo "$user_name $user_passwd $user_id"
 done < $FILE    
