@@ -7,7 +7,7 @@ N="\e[0m"
 FILE=/etc/passwd
 
 if [ ! -f $FILE ]
-do
+then
     echo -e "$R file $FILE not found"
 fi
 
