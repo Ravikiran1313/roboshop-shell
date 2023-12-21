@@ -46,4 +46,4 @@ mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOGFILE
 VALIDATE $? "changing password" 
 
 mysql -uroot -pRoboShop@1 &>> $LOGFILE
-VALIDATE $? "changing to root user" 
+VALIDATE $? "changing to root user"
